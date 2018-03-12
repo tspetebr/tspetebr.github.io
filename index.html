@@ -259,7 +259,7 @@
     <!-- JavaScript -->
     <!-- Bootstrap dependencies: jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-            integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" 
+            integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"
             crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
             integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -269,9 +269,15 @@
             crossorigin="anonymous"></script>
 
     <!-- Custom -->
-    <script src="https://unpkg.com/vue-w3c-valid/dist/simple.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.14/lib/marked.min.js"></script>
+    <script src="https://unpkg.com/vue-w3c-valid@0.0.9/dist/simple.js"
+            integrity="sha384-RR7xjpYCOVMddpRf6xBqVem/ptmsjXw72oM7ANP7A7vEFPCkhChUYeMq8cVUes7c"
+            crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@2.5.15/dist/vue.min.js"
+            integrity="sha384-kFNuNbYkIsj3Dpw9M9jX6yaOFQMmrTNNl3X1wbfk7CJH7enEc6M/iWkiXOqBnAGi"
+            crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/marked@0.3.17/marked.min.js"
+            integrity="sha384-EuTrzHDka3kgCG/r2JKbcC1FdKBKDfhZv5ZvI8eGzJ86jJU3DAM5wJMIzrzG0wsX"
+            crossorigin="anonymous"></script> 
     <script>
     // see https://github.com/dmitry-lavrik/vue-w3c-valid (support for data-v- prefix --> valid XHTML)
     new VueW3CValid({el: 'main'});
