@@ -1,0 +1,68 @@
+@page
+{
+    size: auto;   /* auto is the initial value */
+
+    /* this affects the margin in the printer settings */
+    /* margin: 13mm 10mm 13mm 10mm; */
+    margin: 20mm 10mm 20mm 10mm;
+}
+
+html, body, .container {
+  /* width: 190mm; */
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  /* font-size: 0.6rem; */
+  font-size: 0.8rem;
+}
+
+h3 {
+  font-size: 0.5rem;
+}
+
+.part .heading {
+  /* margin-top: 0.9rem; */
+}
+
+.part .heading:first {
+  /* margin-top: 0; */
+}
+
+h4 {
+  font-size: 1rem;
+}
+
+.part h4 {
+  background-color: #fcfcfc;
+  color: white;
+  -webkit-print-color-adjust: exact !important;   /* Chrome, Safari */
+  color-adjust: exact !important;                 /*Firefox*/
+}
+
+.bg-primary /*, .badge, .badge-primary */ {
+  /* background-color: #007bff !important;
+  -webkit-print-color-adjust: exact;
+  color-adjust: exact; */
+  border: 1px solid #000;
+}
+
+.badge {
+  border: 0;
+}
+
+.badge {
+  -webkit-print-color-adjust: exact !important;   /* Chrome, Safari */
+  color-adjust: exact !important;                 /*Firefox*/
+}
+
+footer a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+/** TODO ***********************************************************************
+Handle col-x-y classes as col-x-(y-1) due to smaller font
+*/

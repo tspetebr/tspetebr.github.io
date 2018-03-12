@@ -1,0 +1,200 @@
+* {
+  /* font-family: 'Yanone Kaffeesatz', sans-serif; */
+  font-weight: 300;
+}
+
+h1 {
+  font-family: 'IM Fell DW Pica', serif;
+  font-size: 5em;
+}
+
+.subtitle {
+  font-family: 'Syncopate', sans-serif;
+}
+
+h2 {
+  font-size: 1rem;
+}
+
+article:first-of-type h3 {
+  margin-top: 0;
+}
+
+h3 {
+  /* margin-top: 0.9rem; */
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+h3 a {
+  /* reset weight (overwritten by a) */
+  font-weight: 500;
+}
+
+/* .part:first-of-type h4{
+  margin-top: 0.1rem;
+} */
+
+h4 {
+  /* margin-top: 0.5rem; */
+  margin-bottom: 0;
+}
+
+.date {
+  padding-top: 4.8px;
+  margin-bottom: 0;
+}
+
+.date-inline {
+  font-style: italic;
+}
+
+p {
+  margin-top: 0.3rem;
+  margin-bottom: 0;
+}
+
+
+address {
+  margin: 0;
+}
+
+.small {
+  font-size: 0.5rem;
+  margin: 0;
+}
+
+.badge {
+    /* border: 1px solid #000; */
+    color: black;
+}
+
+.bg-primary {
+  color: white;
+}
+
+.circle {
+  margin: auto;
+  border-radius: 50px;
+  line-height: 50px;
+  text-align: center;
+  height: 50px;
+  width: 50px;
+}
+
+.highlight {
+  text-align: center;
+}
+
+footer {
+  font-size: 0.8rem;
+}
+
+footer img {
+  height: 0.8rem;
+}
+
+#highlights {
+  font-size: 0.8rem;
+  line-height: 1rem;
+}
+
+#highlights strong {
+  font-size: 1.2rem;
+}
+
+#skills .part {
+  margin-bottom: 0.9rem;
+}
+
+.highlight {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.part ul {
+  margin-top: 0.2rem;
+  margin-bottom: 0rem;
+}
+
+#publications h3 {
+  font-size: 0.8rem;
+}
+
+#publications span {
+  font-size: 0.6rem;
+  font-style: italic;
+}
+
+
+article {
+  padding-bottom: 1.1rem;
+}
+
+article:last-of-type {
+  padding-bottom: 0;
+}
+
+/* article > div:nth-of-type(2) {
+  margin-top: 1rem;
+} */
+
+article > .part {
+  margin-bottom: 0.8rem;
+}
+article > .part:last-of-type {
+  margin-bottom: 0;
+}
+
+/** Dotted line on side */
+article {
+  padding-left: 2rem;
+}
+
+article:nth-child(even) {
+  border-left: 4px dotted #dadada;
+}
+
+article:nth-child(odd) {
+  border-left: 4px solid #aaaaaa; /* #acacac; */
+}
+
+article .part:first-of-type .heading {
+  margin-top: 0;
+}
+
+
+.part h4 {
+  background-color: #fcfcfc;
+}
+
+
+/******************************************************************************/
+/* Color Schemes */
+.programming {
+  background-color: #ffe8d9;
+}
+
+.dbms {
+  background-color: #fcffd9;
+}
+
+.data {
+  background-color: #d9ffe5;
+}
+
+.frontend {
+  background-color: #d9f5ff;
+}
+
+.versioning {
+  background-color: #d9deff;
+}
+
+.systems {
+  background-color: #fcd9ff;
+}
+
+.other {
+  background-color: #ffd9e3;
+}
