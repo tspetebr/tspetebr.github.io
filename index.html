@@ -64,43 +64,47 @@
             <section>
               <h2>Working Experience</h2>
               <!-- Experiences in the same place (group) -->
-              <article data-v-for="exp in experiences" data-v-bind_resource="'#' + exp.org.id" property="worksFor" data-v-bind_typeof="exp.org.type">
-                <meta property="url" data-v-bind_content="exp.org.url" />
-                <div class="row">
-                  <div class="offset-lg-2 col-lg-10">
-                    <h3>
-                      <span property="name">
-                        <template data-v-if="exp.org.dept"><span>{{exp.org.dept}}</span> @ </template>
-                        {{exp.org.name}}
-                      </span>,
-                      <!-- REMINDER: address tag refers to parent article tag or full body -->
-                      <address class="d-inline" data-v-bind_resource="'#location-' + exp.org.id" property="location" typeof="PostalAddress">
-                        <span property="addressLocality">{{exp.org.addr.locality}}</span> – <span property="addressCountry">{{exp.org.addr.country}}</span>
-                      </address>
-                    </h3>
-                    <p data-v-if="exp.org.details" class="small" property="description">{{exp.org.details}}</p>
-                  </div>
-                </div>
-                <div data-v-for="p in exp.part" property="event" class="row part" typeof="Event">
-                  <div class="col-lg-2 date d-none d-lg-block d-print-none"><span property="startDate" data-v-bind_content="p.date.start | toIso8601DateFormat">{{p.date.start | toSimpleDateFormat}}</span> — <span property="endDate" data-v-bind_content="p.date.end | toIso8601DateFormat">{{p.date.end | toSimpleDateFormat}}</span></div>
-                  <div class="col-lg-10">
-                    <div class="heading">
-                      <span class="date-inline float-right d-lg-none"><span>{{p.date.start | toSimpleDateFormat}}</span> — <span>{{p.date.end | toSimpleDateFormat}}</span></span>
-                      <h4 property="name">{{p.title}}</h4>
-                      <meta property="location" data-v-bind_href="'#location-' + exp.org.id" />
+              <template>
+                <article v-for="exp in experiences" v-bind:resource="'#' + exp.org.id" property="worksFor" v-bind:typeof="exp.org.type">
+                  <meta property="url" v-bind:content="exp.org.url" />
+                  <div class="row">
+                    <div class="offset-lg-2 col-lg-10">
+                      <h3>
+                        <span property="name">
+                          <template v-if="exp.org.dept"><span>{{exp.org.dept}}</span> @ </template>
+                          {{exp.org.name}}
+                        </span>,
+                        <!-- REMINDER: address tag refers to parent article tag or full body -->
+                        <address class="d-inline" v-bind:resource="'#location-' + exp.org.id" property="location" typeof="PostalAddress">
+                          <span property="addressLocality">{{exp.org.addr.locality}}</span> – <span property="addressCountry">{{exp.org.addr.country}}</span>
+                        </address>
+                      </h3>
+                      <p v-if="exp.org.details" class="small" property="description">{{exp.org.details}}</p>
                     </div>
-                    <div typeof="CreativeWork" property="workPerformed">
-                      <div property="description" data-v-bind_inner-html.prop="p.description | md"></div>
-                      <div>
-                        <template data-v-for="k, $index in p.keywords">
-                          <span v-bind:class="k[0] + ' badge'" property="keywords">{{k[1]}}</span>
-                          {{$index + 1 === p.keywords.length ? '' : ' '}}
-                        </template>
+                  </div>
+                  <div v-for="p in exp.part" property="event" class="row part" typeof="Event">
+                    <div class="col-lg-2 date d-none d-lg-block d-print-none">
+                      <span property="startDate" v-bind:content="p.date.start | toIso8601DateFormat">{{p.date.start | toSimpleDateFormat}}</span> — <span property="endDate" v-bind:content="p.date.end | toIso8601DateFormat">{{p.date.end | toSimpleDateFormat}}</span>
+                    </div>
+                    <div class="col-lg-10">
+                      <div class="heading">
+                        <span class="date-inline float-right d-lg-none"><span>{{p.date.start | toSimpleDateFormat}}</span> — <span>{{p.date.end | toSimpleDateFormat}}</span></span>
+                        <h4 property="name">{{p.title}}</h4>
+                        <meta property="location" v-bind:href="'#location-' + exp.org.id" />
+                      </div>
+                      <div typeof="CreativeWork" property="workPerformed">
+                        <div property="description" v-bind:inner-html.prop="p.description | md"></div>
+                        <div>
+                          <template v-for="k, $index in p.keywords">
+                            <span v-bind:class="k[0] + ' badge'" property="keywords">{{k[1]}}</span>
+                            {{$index + 1 === p.keywords.length ? '' : ' '}}
+                          </template>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </article>
+                </article>
+              </template>
             </section>
 
             <hr />
@@ -108,8 +112,9 @@
             <section>
               <h2>Education</h2>
               <!-- Experiences in the same place (group) -->
-              <article data-v-for="exp in education" data-v-bind_resource="'#' + exp.org.id" property="alumniOf" typeof="CollegeOrUniversity">
-                <meta property="url" data-v-bind_content="exp.org.url" />
+              <template>
+              <article v-for="exp in education" v-bind:resource="'#' + exp.org.id" property="alumniOf" typeof="CollegeOrUniversity">
+                <meta property="url" v-bind:content="exp.org.url" />
                 <div class="row">
                   <div class="offset-lg-2 col-lg-10">
                     <h3>
@@ -117,25 +122,26 @@
                         {{exp.org.name}}
                       </span>,
                       <!-- REMINDER: address tag refers to parent article tag or full body -->
-                      <address class="d-inline" data-v-bind_resource="'#location-' + exp.org.id" property="location" typeof="PostalAddress">
+                      <address class="d-inline" v-bind:resource="'#location-' + exp.org.id" property="location" typeof="PostalAddress">
                         <span property="addressLocality">{{exp.org.addr.locality}}</span> – <span property="addressCountry">{{exp.org.addr.country}}</span>
                       </address>
                     </h3>
-                    <p data-v-if="exp.org.details" class="small">{{exp.org.details}}</p>
+                    <p v-if="exp.org.details" class="small">{{exp.org.details}}</p>
                   </div>
                 </div>
-                <div data-v-for="p in exp.part" property="event" class="row part" typeof="Event">
-                  <div class="col-lg-2 date d-none d-lg-block d-print-none"><span property="startDate" data-v-bind_content="p.date.start | toIso8601DateFormat">{{p.date.start | toSimpleDateFormat}}</span> — <span property="endDate" data-v-bind_content="p.date.end | toIso8601DateFormat">{{p.date.end | toSimpleDateFormat | usePlaceholder}}</span></div>
+                <div v-for="p in exp.part" property="event" class="row part" typeof="Event">
+                  <div class="col-lg-2 date d-none d-lg-block d-print-none"><span property="startDate" v-bind:content="p.date.start | toIso8601DateFormat">{{p.date.start | toSimpleDateFormat}}</span> — <span property="endDate" v-bind:content="p.date.end | toIso8601DateFormat">{{p.date.end | toSimpleDateFormat | usePlaceholder}}</span></div>
                   <div class="col-lg-10">
                     <div class="heading">
                       <span class="date-inline float-right d-lg-none"><span>{{p.date.start | toSimpleDateFormat}}</span> — <span>{{p.date.end | toSimpleDateFormat | usePlaceholder}}</span></span>
                       <h4 property="name">{{p.name}}</h4>
                     </div>
                     <p class="small">{{p.details}}</p>
-                    <meta property="location" data-v-bind_href="'#location-' + exp.org.id" />
+                    <meta property="location" v-bind:href="'#location-' + exp.org.id" />
                   </div>
                 </div>
               </article>
+              </template>
             </section>
             <!-- <hr />
 
@@ -177,15 +183,17 @@
               </div>
             </div>
             <div>
-              <div class="part" data-v-for="c in skill_categories">
+              <template>
+              <div class="part" v-for="c in skill_categories">
                 <h3>{{c.name}}</h3>
                 <div>
-                  <template data-v-for="s, $index in c.skills">
+                  <template v-for="s, $index in c.skills">
                     <span class="badge" v-bind:class="c.class">{{s}}</span>
                     {{$index + 1 === c.skills.length ? '' : ' '}}
                   </template>
                 </div>
               </div>
+              </template>
             </div>
           </section>
 
@@ -198,7 +206,9 @@
                 <tr><th>Language</th><th>Proficiency</th></tr>
               </thead>
               <tbody>
-                <tr data-v-for="l in languages"><td>{{l.name}}</td><td>{{l.level}}</td></tr>
+                <template>
+                  <tr v-for="l in languages"><td>{{l.name}}</td><td>{{l.level}}</td></tr>
+                </template>
               </tbody>
             </table>
           </section>
@@ -208,23 +218,25 @@
           <section id="publications">
             <h2>Publications</h2>
             <div>
-              <div data-v-for="p in publications" data-v-bind_typeof="p.type || 'ScholarlyArticle'">
-                <meta property="image" data-v-bind_content.prop="p.image || 'https://cdn1.iconfinder.com/data/icons/hawcons/32/698376-icon-55-document-text-512.png'" />
-                <meta property="datePublished" data-v-bind_content="p.datePublished | toIso8601DateFormat" />
-                <h3 class="d-inline" property="headline" data-v-if="p.url">
-                  <a property="sameAs" data-v-bind_href="p.url">{{p.title}}</a>
+              <template>
+              <div v-for="p in publications" v-bind:typeof="p.type || 'ScholarlyArticle'">
+                <meta property="image" v-bind:content.prop="p.image || 'https://cdn1.iconfinder.com/data/icons/hawcons/32/698376-icon-55-document-text-512.png'" />
+                <meta property="datePublished" v-bind:content="p.datePublished | toIso8601DateFormat" />
+                <h3 class="d-inline" property="headline" v-if="p.url">
+                  <a property="sameAs" v-bind:href="p.url">{{p.title}}</a>
                 </h3>
-                <h3 class="d-inline" property="headline" data-v-if="!p.url">
+                <h3 class="d-inline" property="headline" v-if="!p.url">
                   {{p.title}}
                 </h3>
-                <span data-v-if="p.type"> ({{p.type}})</span>
+                <span v-if="p.type"> ({{p.type}})</span>
                 <span>{{p.venue.name}}</span>,
                 <span> <!-- TODO: model address -->
                   <span>{{p.venue.addr.locality}}</span>,
                   <span>{{p.venue.addr.country}}</span>
                 </span>
-                <span data-v-if="p.sourceOrganization">(via <span property="sourceOrganization">{{p.sourceOrganization}}</span>)</span>
+                <span v-if="p.sourceOrganization">(via <span property="sourceOrganization">{{p.sourceOrganization}}</span>)</span>
               </div>
+              </template>
             </div>
           </section>
 
@@ -269,19 +281,13 @@
             crossorigin="anonymous"></script>
 
     <!-- Custom -->
-    <script src="https://unpkg.com/vue-w3c-valid@0.0.9/dist/simple.js"
-            integrity="sha384-RR7xjpYCOVMddpRf6xBqVem/ptmsjXw72oM7ANP7A7vEFPCkhChUYeMq8cVUes7c"
-            crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue@2.5.15/dist/vue.min.js"
             integrity="sha384-kFNuNbYkIsj3Dpw9M9jX6yaOFQMmrTNNl3X1wbfk7CJH7enEc6M/iWkiXOqBnAGi"
             crossorigin="anonymous"></script>
     <script src="https://unpkg.com/marked@0.3.17/marked.min.js"
             integrity="sha384-EuTrzHDka3kgCG/r2JKbcC1FdKBKDfhZv5ZvI8eGzJ86jJU3DAM5wJMIzrzG0wsX"
-            crossorigin="anonymous"></script> 
+            crossorigin="anonymous"></script>
     <script>
-    // see https://github.com/dmitry-lavrik/vue-w3c-valid (support for data-v- prefix --> valid XHTML)
-    new VueW3CValid({el: 'main'});
-
     new Vue({
       "el": 'main',
       "data": {
@@ -593,6 +599,17 @@
           }
         ],
         "publications": [
+          {
+            "title": "ACQUA – Forecasting Quality of Experience",
+            "url": "https://hal.inria.fr/",
+            "datePublished": "2018-02-26",
+            "type": "poster",
+            "venue": {
+              "name": " MOMI 2018",
+              "addr": { "locality": "Sophia Antipolis", "country": "France" }
+            },
+            "sourceOrganization": "INRIA"
+          },
           {
             "title": "An Online Sampling Approach for Controlled Experimentation and QoE Modeling",
             "url": "https://hal.inria.fr/hal-01677378",
