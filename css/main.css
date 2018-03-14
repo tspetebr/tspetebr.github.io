@@ -3,6 +3,20 @@
   font-weight: 300;
 }
 
+
+#contacts table {
+  max-width: 380px;
+  margin: auto;
+  right: auto;
+}
+
+@media (min-width: 768px) {
+  #contacts table {
+    position: absolute;
+    right: 0;
+  }
+}
+
 h1 {
   font-family: 'IM Fell DW Pica', serif;
   font-size: 5em;
