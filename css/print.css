@@ -23,6 +23,15 @@ h3 {
   font-size: 0.5rem;
 }
 
+
+#jobs h3, #edu h3 {
+  text-decoration: underline;
+}
+
+#edu .details {
+  margin-top: 0;
+}
+
 .part .heading {
   /* margin-top: 0.9rem; */
 }
