@@ -31,6 +31,16 @@ h3 a {
   font-weight: 500;
 }
 
+#publications h3 {
+  line-height: 1.3;
+}
+
+#publications p {
+  line-height: 0.6;
+  margin-top: 0.2rem;
+  margin-bottom: 0.8rem;
+}
+
 /* .part:first-of-type h4{
   margin-top: 0.1rem;
 } */
@@ -38,6 +48,15 @@ h3 a {
 h4 {
   /* margin-top: 0.5rem; */
   margin-bottom: 0;
+}
+
+#edu .details {
+  font-size: 0.7rem;
+}
+
+.text-normal {
+  text-decoration: none;
+  color: #000;
 }
 
 .date {

@@ -61,7 +61,7 @@
       <div class="row">
         <div class="col-sm-8">
           <div>
-            <section>
+            <section id="jobs">
               <h2>Working Experience</h2>
               <!-- Experiences in the same place (group) -->
               <template>
@@ -106,7 +106,7 @@
 
             <hr />
 
-            <section>
+            <section id="edu">
               <h2>Education</h2>
               <!-- Experiences in the same place (group) -->
               <template>
@@ -131,7 +131,7 @@
                       <span class="date-inline float-right d-lg-none"><span>{{p.date.start | toSimpleDateFormat}}</span> — <span>{{p.date.end | toSimpleDateFormat | usePlaceholder}}</span></span>
                       <h4 property="name">{{p.name}}</h4>
                     </div>
-                    <p class="small">{{p.details}}</p>
+                    <p class="details">{{p.details}}</p>
                     <meta property="location" v-bind:href="'#location-' + exp.org.id" />
                   </div>
                 </div>
@@ -217,19 +217,21 @@
               <div v-for="p in publications" v-bind:typeof="p.type || 'ScholarlyArticle'">
                 <meta property="image" v-bind:content.prop="p.image || 'https://cdn1.iconfinder.com/data/icons/hawcons/32/698376-icon-55-document-text-512.png'" />
                 <meta property="datePublished" v-bind:content="p.datePublished | toIso8601DateFormat" />
-                <h3 class="d-inline" property="headline" v-if="p.url">
-                  <a property="sameAs" v-bind:href="p.url">{{p.title}}</a>
+
+                <h3 property="headline" v-if="p.url">
+                  <a property="sameAs" v-bind:href="p.url">{{p.title}}<span v-if="p.type" class="text-normal"> ({{p.type}})</span></a>
                 </h3>
-                <h3 class="d-inline" property="headline" v-if="!p.url">
-                  {{p.title}}
+                <h3 property="headline" v-if="!p.url">
+                  {{p.title}}<span v-if="p.type" class="text-normal"> ({{p.type}})</span>
                 </h3>
-                <span v-if="p.type"> ({{p.type}})</span>
-                <span>{{p.venue.name}}</span>,
-                <span> <!-- TODO: model address -->
-                  <span>{{p.venue.addr.locality}}</span>,
-                  <span>{{p.venue.addr.country}}</span>
-                </span>
-                <span v-if="p.sourceOrganization">(via <span property="sourceOrganization">{{p.sourceOrganization}}</span>)</span>
+                <p>
+                  <span>{{p.venue.name}}</span>,
+                  <span> <!-- TODO: model address -->
+                    <span>{{p.venue.addr.locality}}</span>,
+                    <span>{{p.venue.addr.country}}</span>
+                  </span>
+                  <span v-if="p.sourceOrganization">(via <span property="sourceOrganization">{{p.sourceOrganization}}</span>)</span>
+                </p>
               </div>
               </template>
             </div>
