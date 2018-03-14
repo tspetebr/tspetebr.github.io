@@ -5,9 +5,9 @@
 
 
 #contacts table {
-  max-width: 380px;
   margin: auto;
   right: auto;
+  max-width: 380px;
 }
 
 @media (min-width: 768px) {
