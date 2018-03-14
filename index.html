@@ -70,10 +70,7 @@
                   <div class="row">
                     <div class="offset-lg-2 col-lg-10">
                       <h3>
-                        <span property="name">
-                          <template v-if="exp.org.dept"><span>{{exp.org.dept}}</span> @ </template>
-                          {{exp.org.name}}
-                        </span>,
+                        <span property="name"><template v-if="exp.org.dept"><span>{{exp.org.dept}}</span> @ </template>{{exp.org.name}}</span>,
                         <!-- REMINDER: address tag refers to parent article tag or full body -->
                         <address class="d-inline" v-bind:resource="'#location-' + exp.org.id" property="location" typeof="PostalAddress">
                           <span property="addressLocality">{{exp.org.addr.locality}}</span> – <span property="addressCountry">{{exp.org.addr.country}}</span>
@@ -118,9 +115,7 @@
                 <div class="row">
                   <div class="offset-lg-2 col-lg-10">
                     <h3>
-                      <span property="name">
-                        {{exp.org.name}}
-                      </span>,
+                      <span property="name">{{exp.org.name}}</span>,
                       <!-- REMINDER: address tag refers to parent article tag or full body -->
                       <address class="d-inline" v-bind:resource="'#location-' + exp.org.id" property="location" typeof="PostalAddress">
                         <span property="addressLocality">{{exp.org.addr.locality}}</span> – <span property="addressCountry">{{exp.org.addr.country}}</span>
