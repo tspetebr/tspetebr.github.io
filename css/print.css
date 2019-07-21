@@ -72,6 +72,30 @@ footer a {
     text-decoration: inherit;
 }
 
+/* Firefox */
+.page.row {
+  display: block !important;
+}
+.page.row > div {
+  float: left;
+}
+
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding-left: 15px;
+  padding-right: 40px;
+}
+footer > span {
+  display: block;
+}
+
+/** TODO ***********************************************************************
+Handle col-x-y classes to print property in Chrome.
+Overwrite col-x-y to col-xs-y (see https://stackoverflow.com/q/22199429)
+*/
+
 /** TODO ***********************************************************************
 Handle col-x-y classes as col-x-(y-1) due to smaller font
 */
