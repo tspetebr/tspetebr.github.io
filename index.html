@@ -24,7 +24,7 @@
         <!-- General information -->
         <div class="col-md-8 col-lg-8">
           <h1 property="name">Thierry Spetebroot</h1>
-          <p class="subtitle" property="jobTitle">Research Engineer & Full Stack developer</p>
+          <p class="subtitle" property="jobTitle">Data Scientist, Research Engineer & Full Stack developer</p>
           <p class="d-none">
             <span>Born the</span> <time property="birthDate" datetime="1990-07-25">25th July 1990</time> in <span property="birthPlace" typeof="Place"><span property="address" typeof="PostalAddress"><span property="addressLocality">Frejus</span> (<span property="addressCountry">France</span>)</span></span> -
             <span>Nationalities:</span> <span property="nationality">French</span>, <span property="nationality">Italian</span>
@@ -58,7 +58,7 @@
 
       <!-- 2 columns layout -->
       <!-- Main Content -->
-      <div class="row">
+      <div class="page row">
         <div class="col-sm-8">
           <div>
             <section id="jobs">
@@ -154,25 +154,25 @@
             <div class="row" id="highlights">
               <div class="highlight col-3 col-sm-6 col-md-3">
                 <div class="circle bg-primary">
+                  <strong>4</strong><small class="font-italic">yr</small>
+                </div>
+                <div>Python</div>
+              </div>
+              <div class="highlight col-3 col-sm-6 col-md-3">
+                <div class="circle bg-primary">
+                  <strong>3</strong><small>.5</small><small class="font-italic">yr</small>
+                </div>
+                <div>Machine Learning</div>
+              </div>
+              <div class="highlight col-3 col-sm-6 col-md-3">
+                <div class="circle bg-primary">
                   <strong>3</strong><small>.5</small><small class="font-italic">yr</small>
                 </div>
                 <div>Java</div>
               </div>
               <div class="highlight col-3 col-sm-6 col-md-3">
                 <div class="circle bg-primary">
-                  <strong>3</strong><small class="font-italic">yr</small>
-                </div>
-                <div>Python</div>
-              </div>
-              <div class="highlight col-3 col-sm-6 col-md-3">
-                <div class="circle bg-primary">
-                  <strong>2</strong><small>.5</small><small class="font-italic">yr</small>
-                </div>
-                <div>Machine Learning</div>
-              </div>
-              <div class="highlight col-3 col-sm-6 col-md-3">
-                <div class="circle bg-primary">
-                  <strong>1</strong><small class="font-italic">yr</small>
+                  <strong>1</strong><small>.5</small><small class="font-italic">yr</small>
                 </div>
                 <div>Docker</div>
               </div>
@@ -242,18 +242,20 @@
           <section>
             <h2>Interests</h2>
             <div>
-              Research &#9679; DevOps &#9679; Continuous Integration &#9679;
-              Machine Learning &#9679; Data Analysis &#9679;
+              Research &#9679; Innovation &#9679;
+              Machine Learning &#9679; <br/>
+              Semantic Web &#9679;
+              Data Analysis &#9679;
               Code reusability &#9679; Async Programming &#9679;
-              Reactive Programming &#9679; Concurrent Models &#9679;
-              Semantic Web &#9679; Ontologies
+              Reactive Programming &#9679;
+              DevOps &#9679; Continuous Integration
             </div>
           </section>
 
         </div>
       </div>
 
-      <hr />
+      <hr class="footerhr" />
 
       <!-- Foot notes -->
       <footer>
@@ -289,6 +291,112 @@
       "el": 'main',
       "data": {
         "experiences": [
+          {
+            "org": {
+              "id": "amadeus",
+              "name": "Amadeus",
+              "dept": "CGI",
+              "type": "GovernmentOrganization",
+              "url": "https://www.amadeus.com/",
+              "addr": {
+                "locality": "Sophia Antipolis",
+                "country": "France",
+                "postalCode": "",
+                "streetAddress": ""
+              }
+            },
+            "part": [
+              {
+                "date": {
+                  "start": "2018-09",
+                  "end":   "Present"
+                },
+                "title": "Data Scientist",
+                "description":
+                "Design and development of innovative products for Hotel Guest Intelligence.\n\
+                \n\
+                Main technical subjects:\n\
+                 - data cleaning and data analysis\n\
+                 - record deduplication (using state of the art graph algorithms)\n\
+                 - segmentation (via clustering)\n\
+                \n\
+                Main responsibilities:\n\
+                 - provide innovative ideas\n\
+                 - share insights and techniques with brainstorming and presentations\n\
+                 - develop POCs and industrialized code\n\
+                \n\
+                (Parallel) Study in collaboration with TravelClick (under NDA).",
+                "keywords": [
+                  ["programming", "Scala"],
+                  ["programming", "Spark"],
+                  ["programming", "Python3.x"],
+                  ["dbms", "Hive"],
+                  ["data", "Machine Learning"],
+                  ["data", "Data Analysis"],
+                  ["data", "Graph Algorithms"],
+                  ["data", "Scikit-learn"],
+                  ["data", "Pandas"],
+                  ["data", "Hadoop"],
+                  ["data", "Big Data"],
+                  ["data", "Jupyter Notebooks"],
+                  ["frontend", "Qlik"],
+                  ["systems", "Bash"],
+                  ["systems", "Docker"],
+                  ["systems", "Software Factory"],
+                  ["systems", "LambdaBox"],
+                  ["other", "OOP"],
+                  ["other", "Functional Programming"],
+                  ["other", "Presentations"]
+                ]
+              }
+            ]
+          },
+          {
+            "org": {
+              "id": "sap",
+              "name": "SAP Labs",
+              "dept": "Security Research",
+              "type": "GovernmentOrganization",
+              "url": "https://www.sap.com",
+              "addr": {
+                "locality": "Mougins",
+                "country": "France",
+                "postalCode": "06259",
+                "streetAddress": "805 Avenue du Dr Donat"
+              }
+            },
+            "part": [
+              {
+                "date": {
+                  "start": "2018-06",
+                  "end":   "2018-09"
+                },
+                "title": "Cyber Security Engineer (Short Term Contract)",
+                "description":
+          "Creation of an experimental machine learning system to detect and categorize heterogeneous text contents",
+                "keywords": [
+                  ["programming", "Python3.x"],
+                  ["programming", "Node.js"],
+                  ["programming", "AMQP"],
+                  ["data", "Machine Learning"],
+                  ["data", "NLP"],
+                  ["data", "Scikit-learn"],
+                  ["data", "spaCy"],
+                  ["data", "Pandas"],
+                  ["frontend", "Matplotlib"],
+                  ["frontend", "Bootstrap"],
+                  ["frontend", "D3.js"],
+                  ["frontend", "VueJS"],
+                  ["dbms", "MongoDB"],
+                  ["systems", "Bash"],
+                  ["systems", "Docker"],
+                  ["other", "OOP"],
+                  ["other", "Async"],
+                  ["other", "Security"]
+                ]
+              }
+            ]
+          },
           {
             "org": {
               "id": "inria",
@@ -545,15 +653,15 @@
             "color": "rgb(191, 234, 255)",
             "class": "programming",
             "skills": [
-              "Java", "Android", "Rx", "C#", "Python2.7", "Python3.x",
+              "Scala", "Python", "Java", "Android", "Rx", "C#",
               "Javascript", "Typescript", "Node.js", "Prolog", "C"
             ]
           },
           {
-            "name": "DBMS",
+            "name": "Data Storage & DBMS",
             "class": "dbms",
             "skills": [
-              "MySQL", "MongoDB"
+              "MySQL", "MongoDB", "HDFS", "Parquet", "Hive"
             ]
           },
           {
@@ -561,14 +669,15 @@
             "class": "data",
             "skills": [
               "Statistical Analysis", "Machine Learning", "Active Learning",
-              "Weka", "Scikit-learn", "Pandas"
+              "Weka", "Scikit-learn", "spaCy", "Pandas", "Hadoop", "Big Data"
             ]
           },
           {
             "name": "Frontend & Data Visualization",
             "class": "frontend",
             "skills": [
-              "HTML5", "CSS3", "Bootstrap", "D3.js", "Leaflet", "Matplotlib"
+              "HTML5", "CSS3", "Bootstrap", "D3.js", "Leaflet", "Matplotlib",
+              "Qlik"
             ]
           },
           {
@@ -596,6 +705,16 @@
           }
         ],
         "publications": [
+          {
+            "title": "ACQUA: A user friendly platform for lightweight network monitoring and QoE forecasting",
+            "url": "https://hal.inria.fr/hal-01982749",
+            "datePublished": "2019-02-18",
+            "venue": {
+              "name": " QoE-Management 2019",
+              "addr": { "locality": "Paris", "country": "France" }
+            },
+            "sourceOrganization": "INRIA"
+          },
           {
             "title": "ACQUA – Forecasting Quality of Experience",
             "url": "https://hal.inria.fr/hal-01731583",
