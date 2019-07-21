@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<!-- Scaling (1 A4 page): 68.5% -->
+<html xml:lang="en" lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+          crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica:400i%7CSyncopate" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/print.css" media="print" />
+
+    <title>Thierry Spetebroot – CV</title>
+  </head>
+  <body vocab="http://schema.org/">
+    <main class="container">
+      <header class="row" typeof="schema:Person">
+        <!-- General information -->
+        <div class="col-md-8 col-lg-8">
+          <h1 property="name">Thierry Spetebroot</h1>
+          <p class="subtitle" property="jobTitle">Data Scientist, Research Engineer & Full Stack developer</p>
+          <p class="d-none">
+            <span>Born the</span> <time property="birthDate" datetime="1990-07-25">25th July 1990</time> in <span property="birthPlace" typeof="Place"><span property="address" typeof="PostalAddress"><span property="addressLocality">Frejus</span> (<span property="addressCountry">France</span>)</span></span> -
+            <span>Nationalities:</span> <span property="nationality">French</span>, <span property="nationality">Italian</span>
+          </p>
+        </div>
+        <div class="col-md-4 col-lg-4" id="contacts"><table class="text-right">
+          <tr>
+              <td class="col-sm-1"><span class="social fa fa-at"></span></td><!-- ALT: fa-envelope-o, fa-envelope -->
+              <td class="col-sm-11 fit"><a property="email" href="mailto:thierry.spetebroot@gmail.com">thierry.spetebroot@gmail.com</a></td>
+          </tr>
+          <tr>
+              <td class="col-sm-1"><span class="social fa fa-phone"></span></td>
+              <td class="col-sm-11 fit"><a property="telephone" href="tel:0033782422892">+33 7 82 42 28 92</a></td>
+          </tr>
+          <tr>
+              <td class="col-sm-1"><span class="social fa fa-skype"></span></td>
+              <td class="col-sm-11 fit"><a property="sameAs" href="skype:thierry.spetebroot">thierry.spetebroot</a></td>
+          </tr>
+          <tr>
+              <td class="col-sm-1"><span class="social fa fa-linkedin"></span></td>
+              <td class="col-sm-11 fit"><a property="sameAs" href="https://www.linkedin.com/in/thierry-spetebroot">thierry-spetebroot</a></td>
+          </tr>
+          <tr>
+              <td class="col-sm-1"><span class="social fa fa-mouse-pointer"></span></td><!-- ALT: fa-link,  -->
+              <td class="col-sm-11 fit"><a property="sameAs" href="http://tspetebr.me">tspetebr.me</a></td>
+          </tr>
+        </table></div>
+      </header>
+
+      <hr class="firsthr" />
+
+      <!-- 2 columns layout -->
+      <!-- Main Content -->
+      <div class="page row">
+        <div class="col-sm-8">
+          <div>
+            <section id="jobs">
+              <h2>Working Experience</h2>
+              <!-- Experiences in the same place (group) -->
+              <template>
+                <article v-for="exp in experiences" v-bind:resource="'#' + exp.org.id" property="worksFor" v-bind:typeof="exp.org.type">
+                  <meta property="url" v-bind:content="exp.org.url" />
+                  <div class="row">
+                    <div class="offset-lg-2 col-lg-10">
+                      <h3>
+                        <span property="name"><template v-if="exp.org.dept"><span>{{exp.org.dept}}</span> @ </template>{{exp.org.name}}</span>,
+                        <!-- REMINDER: address tag refers to parent article tag or full body -->
+                        <address class="d-inline" v-bind:resource="'#location-' + exp.org.id" property="location" typeof="PostalAddress">
+                          <span property="addressLocality">{{exp.org.addr.locality}}</span> – <span property="addressCountry">{{exp.org.addr.country}}</span>
+                        </address>
+                      </h3>
+                      <p v-if="exp.org.details" class="small" property="description">{{exp.org.details}}</p>
+                    </div>
+                  </div>
+                  <div v-for="p in exp.part" property="event" class="row part" typeof="Event">
+                    <div class="col-lg-2 date d-none d-lg-block d-print-none">
+                      <span property="startDate" v-bind:content="p.date.start | toIso8601DateFormat">{{p.date.start | toSimpleDateFormat}}</span> — <span property="endDate" v-bind:content="p.date.end | toIso8601DateFormat">{{p.date.end | toSimpleDateFormat}}</span>
+                    </div>
+                    <div class="col-lg-10">
+                      <div class="heading">
+                        <span class="date-inline float-right d-lg-none"><span>{{p.date.start | toSimpleDateFormat}}</span> — <span>{{p.date.end | toSimpleDateFormat}}</span></span>
+                        <h4 property="name">{{p.title}}</h4>
+                        <meta property="location" v-bind:href="'#location-' + exp.org.id" />
+                      </div>
+                      <div typeof="CreativeWork" property="workPerformed">
+                        <div property="description" v-bind:inner-html.prop="p.description | md"></div>
+                        <div>
+                          <template v-for="k, $index in p.keywords">
+                            <span v-bind:class="k[0] + ' badge'" property="keywords">{{k[1]}}</span>
+                            {{$index + 1 === p.keywords.length ? '' : ' '}}
+                          </template>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </template>
+            </section>
+
+            <hr />
+
+            <section id="edu">
+              <h2>Education</h2>
+              <!-- Experiences in the same place (group) -->
+              <template>
+              <article v-for="exp in education" v-bind:resource="'#' + exp.org.id" property="alumniOf" typeof="CollegeOrUniversity">
+                <meta property="url" v-bind:content="exp.org.url" />
+                <div class="row">
+                  <div class="offset-lg-2 col-lg-10">
+                    <h3>
+                      <span property="name">{{exp.org.name}}</span>,
+                      <!-- REMINDER: address tag refers to parent article tag or full body -->
+                      <address class="d-inline" v-bind:resource="'#location-' + exp.org.id" property="location" typeof="PostalAddress">
+                        <span property="addressLocality">{{exp.org.addr.locality}}</span> – <span property="addressCountry">{{exp.org.addr.country}}</span>
+                      </address>
+                    </h3>
+                    <p v-if="exp.org.details" class="small">{{exp.org.details}}</p>
+                  </div>
+                </div>
+                <div v-for="p in exp.part" property="event" class="row part" typeof="Event">
+                  <div class="col-lg-2 date d-none d-lg-block d-print-none"><span property="startDate" v-bind:content="p.date.start | toIso8601DateFormat">{{p.date.start | toSimpleDateFormat}}</span> — <span property="endDate" v-bind:content="p.date.end | toIso8601DateFormat">{{p.date.end | toSimpleDateFormat | usePlaceholder}}</span></div>
+                  <div class="col-lg-10">
+                    <div class="heading">
+                      <span class="date-inline float-right d-lg-none"><span>{{p.date.start | toSimpleDateFormat}}</span> — <span>{{p.date.end | toSimpleDateFormat | usePlaceholder}}</span></span>
+                      <h4 property="name">{{p.name}}</h4>
+                    </div>
+                    <p class="details">{{p.details}}</p>
+                    <meta property="location" v-bind:href="'#location-' + exp.org.id" />
+                  </div>
+                </div>
+              </article>
+              </template>
+            </section>
+            <!-- <hr />
+
+            <section>
+              <h2>Courses and Certifications</h2>
+            </section>
+            <hr class="d-block d-sm-none" /> -->
+
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <section id="skills">
+            <h2>Skills</h2>
+            <div class="row" id="highlights">
+              <div class="highlight col-3 col-sm-6 col-md-3">
+                <div class="circle bg-primary">
+                  <strong>4</strong><small class="font-italic">yr</small>
+                </div>
+                <div>Python</div>
+              </div>
+              <div class="highlight col-3 col-sm-6 col-md-3">
+                <div class="circle bg-primary">
+                  <strong>3</strong><small>.5</small><small class="font-italic">yr</small>
+                </div>
+                <div>Machine Learning</div>
+              </div>
+              <div class="highlight col-3 col-sm-6 col-md-3">
+                <div class="circle bg-primary">
+                  <strong>3</strong><small>.5</small><small class="font-italic">yr</small>
+                </div>
+                <div>Java</div>
+              </div>
+              <div class="highlight col-3 col-sm-6 col-md-3">
+                <div class="circle bg-primary">
+                  <strong>1</strong><small>.5</small><small class="font-italic">yr</small>
+                </div>
+                <div>Docker</div>
+              </div>
+            </div>
+            <div>
+              <template>
+              <div class="part" v-for="c in skill_categories">
+                <h3>{{c.name}}</h3>
+                <div>
+                  <template v-for="s, $index in c.skills">
+                    <span class="badge" v-bind:class="c.class">{{s}}</span>
+                    {{$index + 1 === c.skills.length ? '' : ' '}}
+                  </template>
+                </div>
+              </div>
+              </template>
+            </div>
+          </section>
+
+          <hr />
+
+          <section>
+            <h2>Languages</h2>
+            <table style="width: 100%;">
+              <thead class="d-none">
+                <tr><th>Language</th><th>Proficiency</th></tr>
+              </thead>
+              <tbody>
+                <template>
+                  <tr v-for="l in languages"><td>{{l.name}}</td><td>{{l.level}}</td></tr>
+                </template>
+              </tbody>
+            </table>
+          </section>
+
+          <hr />
+
+          <section id="publications">
+            <h2>Publications</h2>
+            <div>
+              <template>
+              <div v-for="p in publications" v-bind:typeof="p.type || 'ScholarlyArticle'">
+                <meta property="image" v-bind:content.prop="p.image || 'https://cdn1.iconfinder.com/data/icons/hawcons/32/698376-icon-55-document-text-512.png'" />
+                <meta property="datePublished" v-bind:content="p.datePublished | toIso8601DateFormat" />
+
+                <h3 property="headline" v-if="p.url">
+                  <a property="sameAs" v-bind:href="p.url">{{p.title}}<span v-if="p.type" class="text-normal"> ({{p.type}})</span></a>
+                </h3>
+                <h3 property="headline" v-if="!p.url">
+                  {{p.title}}<span v-if="p.type" class="text-normal"> ({{p.type}})</span>
+                </h3>
+                <p>
+                  <span>{{p.venue.name}}</span>,
+                  <span> <!-- TODO: model address -->
+                    <span>{{p.venue.addr.locality}}</span>,
+                    <span>{{p.venue.addr.country}}</span>
+                  </span>
+                  <span v-if="p.sourceOrganization">(via <span property="sourceOrganization">{{p.sourceOrganization}}</span>)</span>
+                </p>
+              </div>
+              </template>
+            </div>
+          </section>
+
+          <hr />
+
+          <section>
+            <h2>Interests</h2>
+            <div>
+              Research &#9679; Innovation &#9679;
+              Machine Learning &#9679; <br/>
+              Semantic Web &#9679;
+              Data Analysis &#9679;
+              Code reusability &#9679; Async Programming &#9679;
+              Reactive Programming &#9679;
+              DevOps &#9679; Continuous Integration
+            </div>
+          </section>
+
+        </div>
+      </div>
+
+      <hr class="footerhr" />
+
+      <!-- Foot notes -->
+      <footer>
+        This page has been created with
+        <span>
+        <a href="https://www.w3.org/TR/html5/" title="HTML 5.2"><img class="d-inline align-middle" src="../img/logo-html5.svg" /> <u>HTML5</u></a>,
+        <a href="http://www.w3.org/RDF/" title="RDF Resource Description Framework"><img class="d-inline align-middle" src="../img/logo-rdf.svg" /> <u>RDF</u></a>,
+        <a href="https://vuejs.org/" title="Vue.js"><img class="d-inline align-middle" src="../img/logo-vue.svg" /> <u>Vue.js</u></a>,
+        <a href="https://getbootstrap.com/" title="Bootstrap 4.x"><img class="d-inline align-middle" src="../img/logo-bootstrap.svg" /> <u>Bootstrap 4</u></a>
+        </span>
+      </footer>
+    </main>
+
+    <!-- JavaScript -->
+    <!-- Bootstrap dependencies: jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <!-- Custom -->
+    <script src="https://unpkg.com/vue@2.5.15/dist/vue.min.js"
+            integrity="sha384-kFNuNbYkIsj3Dpw9M9jX6yaOFQMmrTNNl3X1wbfk7CJH7enEc6M/iWkiXOqBnAGi"
+            crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/marked@0.3.17/marked.min.js"
+            integrity="sha384-EuTrzHDka3kgCG/r2JKbcC1FdKBKDfhZv5ZvI8eGzJ86jJU3DAM5wJMIzrzG0wsX"
+            crossorigin="anonymous"></script>
+    <script>
+    new Vue({
+      "el": 'main',
+      "data": {
+        "experiences": [
+          {
+            "org": {
+              "id": "amadeus",
+              "name": "Amadeus",
+              "dept": "CGI",
+              "type": "GovernmentOrganization",
+              "url": "https://www.amadeus.com/",
+              "addr": {
+                "locality": "Sophia Antipolis",
+                "country": "France",
+                "postalCode": "",
+                "streetAddress": ""
+              }
+            },
+            "part": [
+              {
+                "date": {
+                  "start": "2018-09",
+                  "end":   "Present"
+                },
+                "title": "Data Scientist",
+                "description":
+"Design and development of innovative products for Hotel Guest Intelligence.\n\
+\n\
+Main technical subjects:\n\
+ - data cleaning and data analysis\n\
+ - record deduplication (using state of the art graph algorithms)\n\
+ - segmentation (via clustering)\n\
+\n\
+Main responsibilities:\n\
+ - provide innovative ideas\n\
+ - share insights and techniques with brainstorming and presentations\n\
+ - develop POCs and industrialized code\n\
+\n\
+(Parallel) Study in collaboration with TravelClick (under NDA).",
+                "keywords": [
+                  ["programming", "Scala"],
+                  ["programming", "Spark"],
+                  ["programming", "Python3.x"],
+                  ["dbms", "Hive"],
+                  ["data", "Machine Learning"],
+                  ["data", "Data Analysis"],
+                  ["data", "Graph Algorithms"],
+                  ["data", "Scikit-learn"],
+                  ["data", "Pandas"],
+                  ["data", "Hadoop"],
+                  ["data", "Big Data"],
+                  ["data", "Jupyter Notebooks"],
+                  ["frontend", "Qlik"],
+                  ["systems", "Bash"],
+                  ["systems", "Docker"],
+                  ["systems", "Software Factory"],
+                  ["systems", "LambdaBox"],
+                  ["other", "OOP"],
+                  ["other", "Functional Programming"],
+                  ["other", "Presentations"]
+                ]
+              }
+            ]
+          },
+          {
+            "org": {
+              "id": "sap",
+              "name": "SAP Labs",
+              "dept": "Security Research",
+              "type": "GovernmentOrganization",
+              "url": "https://www.sap.com",
+              "addr": {
+                "locality": "Mougins",
+                "country": "France",
+                "postalCode": "06259",
+                "streetAddress": "805 Avenue du Dr Donat"
+              }
+            },
+            "part": [
+              {
+                "date": {
+                  "start": "2018-06",
+                  "end":   "2018-09"
+                },
+                "title": "Cyber Security Engineer (Short Term Contract)",
+                "description":
+          "Creation of an experimental machine learning system to detect and categorize heterogeneous text contents",
+                "keywords": [
+                  ["programming", "Python3.x"],
+                  ["programming", "Node.js"],
+                  ["programming", "AMQP"],
+                  ["dbms", "MongoDB"],
+                  ["data", "Machine Learning"],
+                  ["data", "NLP"],
+                  ["data", "Scikit-learn"],
+                  ["data", "spaCy"],
+                  ["data", "Pandas"],
+                  ["frontend", "Matplotlib"],
+                  ["frontend", "Bootstrap"],
+                  ["frontend", "D3.js"],
+                  ["frontend", "VueJS"],
+                  ["systems", "Bash"],
+                  ["systems", "Docker"],
+                  ["other", "OOP"],
+                  ["other", "Async"],
+                  ["other", "Security"],
+                  ["other", "Presentations"]
+                ]
+              }
+            ]
+          },
+          {
+            "org": {
+              "id": "inria",
+              "name": "INRIA",
+              "dept": "DIANA",
+              "type": "GovernmentOrganization",
+              "url": "https://www.inria.fr/",
+              "addr": {
+                "locality": "Sophia Antipolis",
+                "country": "France",
+                "postalCode": "",
+                "streetAddress": ""
+              }
+            },
+            "part": [
+              {
+                "date": {
+                  "start": "2015-10",
+                  "end":   "2018-03"
+                },
+                "title": "Research Engineer",
+                "description":
+"Complete design and development of ACQUA, a software solution to predict the Quality of Experience of popular applications using machine learning.\n\n\n\
+ - _Frontend_: Java + Android application; web portal\n\
+ - _Backend_: NodeJS + Java measurement backend; Python + MongoDB web server\n\
+ - _Deployment_: VMs, Docker and custom bash scripts\n\
+ - _Networking_: lightweight measurement system to estimate end to end network conditions\n\
+ - _Security_: privacy & ethical risks assessement\n\
+ - _Testing_: unit tests; load tests; controlled experimentation\n\
+ - _Data Visualization & Analytics_: cartography; insights on collected data\n\
+ - _Machine Learning_: prediction models using supervised learning & active learning",
+                "keywords": [
+                  ["programming", "Java"],
+                  ["programming", "Android"],
+                  ["programming", "Rx"],
+                  ["programming", "Python3.x"],
+                  ["programming", "Node.js"],
+                  ["dbms", "MongoDB"],
+                  ["data", "Machine Learning"],
+                  ["data", "Active Learning"],
+                  ["data", "Scikit-learn"],
+                  ["data", "Pandas"],
+                  ["frontend", "Matplotlib"],
+                  ["frontend", "Bootstrap"],
+                  ["frontend", "D3.js"],
+                  ["frontend", "Leaflet"],
+                  ["systems", "Bash"],
+                  ["systems", "Docker"],
+                  ["other", "Network Measurements"],
+                  ["other", "OOP"],
+                  ["other", "Presentations"]
+                ]
+              },
+              {
+                "date": {
+                  "start": "2015-03",
+                  "end":   "2015-08"
+                },
+                "title": "Software Designer and Developer (Master Internship & Thesis)",
+                "description": "Machine learning study to relate network-level measurements to expected Quality of Experience for video applicatons.",
+                "keywords": [
+                  ["programming", "Python2.7"],
+                  ["programming", "Javascript"],
+                  ["data", "Machine Learning"],
+                  ["data", "Active Learning"],
+                  ["data", "Weka"],
+                  ["other", "Wireshark"],
+                  ["other", "Networks"],
+                  ["other", "OOP"],
+                  ["other", "Presentations"]
+                ]
+              }
+            ]
+          },
+          {
+            "org": {
+              "id": "enea",
+              "name": "ENEA",
+              "details": "Italian National agency for new technologies, energy and sustainable economic development",
+              "type": "GovernmentOrganization",
+              "url": "https://www.enea.it/",
+              "addr": {
+                "locality": "Bologna",
+                "country": "Italy"
+              }
+            },
+            "part": [
+              {
+                "date": {
+                  "start": "2011-12",
+                  "end":   "2014-09"
+                },
+                "title": "Intern & Consultant",
+                "description": "\
+Development of an ontology-based Multi-Agent System (MAS) control system applied to WasteWater Treatment Plants (WWTP).\n\
+Development of a Java driver and a distributed control infrastructure used in experimental WWTPs.",
+                "keywords": [
+                  ["programming", "Java"],
+                  ["programming", "Java EE"],
+                  ["other", "DROOLS"],
+                  ["other", "JBoss"],
+                  ["other", "OWL2"],
+                  ["other", "RDF"],
+                  ["other", "Semantic Web"],
+                  ["other", "Networks"],
+                  ["other", "OOP"]
+                ]
+              }
+            ]
+          },
+          {
+            "org": {
+              "id": "iuav",
+              "name": "IUAV",
+              "details": "Department of Design and Planning in Complex Environments",
+              "type": "GovernmentOrganization",
+              "url": "https://www.iuav.it/",
+              "addr": {
+                "locality": "Venice",
+                "country": "Italy"
+              }
+            },
+            "part": [
+              {
+                "date": {
+                  "start": "2012-08",
+                  "end":   "2012-11"
+                },
+                "title": "Project Manager and Developer",
+                "description":
+"Complete technical development of _Dynamic Fractals_, an interactive art installation, where people can manipulate fractals using a motion sensing device (Kinect).",
+                "keywords": [
+                  ["programming", "C#"],
+                  ["other", "Kinect"],
+                  ["other", "NUI"],
+                  ["other", "Interaction Design"],
+                  ["other", "OOP"]
+                ]
+              }
+            ]
+          }
+        ],
+        "education": [
+          {
+            "org": {
+              "id": "polytech-nice-sophia",
+              "name": "Polytech Nice Sophia-Antipolis",
+              "type": "",
+              "url": "",
+              "addr": {
+                "locality": "Sophia-Antipolis",
+                "country":  "France"
+              }
+            },
+            "part": [
+              {
+                "name": "Master 2 IFI Ubinet",
+                "details": "Master degree in Computer Science (erasmus - top 3 student)",
+                "date": {
+                  "start": "2014-09",
+                  "end":   "2015-08"
+                }
+              }
+            ]
+          },
+          {
+            "org": {
+              "id": "unibo",
+              "name": "Alma Mater Studiorium - University of Bologna",
+              "type": "",
+              "url": "",
+              "addr": {
+                "locality": "Bologna",
+                "country": "Italy"
+              }
+            },
+            "part": [
+              {
+                "name": "Laurea Magistrale in Ingegneria Informatica",
+                "details": "Master degree in Computer Science & Engineering",
+                "date": {
+                  "start": "2013-09",
+                  "end":   ""
+                }
+              },
+              {
+                "name": "Laurea in Ingegneria Informatica",
+                "details": "Bachelor degree in Computer Science & Engineering",
+                "date": {
+                  "start": "2009-09",
+                  "end":   "2013-03"
+                }
+              }
+            ]
+          }
+        ],
+        "highlights": [
+          "Java", "Python", "Machine Learning", "Docker"
+        ],
+        "skill_categories": [
+          {
+            "name": "Programming",
+            "color": "rgb(191, 234, 255)",
+            "class": "programming",
+            "skills": [
+              "Scala", "Python", "Java", "Android", "Rx", "C#",
+              "Javascript", "Typescript", "Node.js", "Prolog", "C"
+            ]
+          },
+          {
+            "name": "Data Storage & DBMS",
+            "class": "dbms",
+            "skills": [
+              "MySQL", "MongoDB", "HDFS", "Parquet", "Hive"
+            ]
+          },
+          {
+            "name": "Data Science",
+            "class": "data",
+            "skills": [
+              "Statistical Analysis", "Machine Learning", "Active Learning",
+              "Weka", "Scikit-learn", "spaCy", "Pandas", "Hadoop", "Big Data"
+            ]
+          },
+          {
+            "name": "Frontend & Data Visualization",
+            "class": "frontend",
+            "skills": [
+              "HTML5", "CSS3", "Bootstrap", "D3.js", "Leaflet", "Matplotlib",
+              "Qlik"
+            ]
+          },
+          {
+            "name": "Versioning",
+            "class": "versioning",
+            "skills": [
+              "Git", "GitLab", "SVN"
+            ]
+          },
+          {
+            "name": "System Administration",
+            "class": "systems",
+            "skills": [
+              "Docker", "GitLab-CI", "Bash", "IpTables", "CentOS", "Ubuntu"
+            ]
+          },
+          {
+            "name": "Other",
+            "class": "other",
+            "skills": [
+              "Network Measurements", "Scientific Writing", "Latex",
+              "Privacy Risk Assessement", "OOP", "UML", "Graphic Design",
+              "Semantic Web"
+            ]
+          }
+        ],
+        "publications": [
+          {
+            "title": "ACQUA: A user friendly platform for lightweight network monitoring and QoE forecasting",
+            "url": "https://hal.inria.fr/hal-01982749",
+            "datePublished": "2019-02-18",
+            "venue": {
+              "name": " QoE-Management 2019",
+              "addr": { "locality": "Paris", "country": "France" }
+            },
+            "sourceOrganization": "INRIA"
+          },
+          {
+            "title": "ACQUA – Forecasting Quality of Experience",
+            "url": "https://hal.inria.fr/hal-01731583",
+            "datePublished": "2018-02-26",
+            "type": "poster",
+            "venue": {
+              "name": " MOMI 2018",
+              "addr": { "locality": "Sophia Antipolis", "country": "France" }
+            },
+            "sourceOrganization": "INRIA"
+          },
+          {
+            "title": "An Online Sampling Approach for Controlled Experimentation and QoE Modeling",
+            "url": "https://hal.inria.fr/hal-01677378",
+            "datePublished": "2018-05",
+            "venue": {
+              "name": " IEEE ICC 2018",
+              "addr": { "locality": "Kansas City", "country": "US" }
+            },
+            "sourceOrganization": "INRIA"
+          },
+          {
+            "title": "On active sampling of controlled experiments for QoE modeling",
+            "url": "https://hal.inria.fr/hal-01525723",
+            "datePublished": "2017-08",
+            "venue": {
+              "name": "ACM SIGCOMM 2017",
+              "addr": { "locality": "Los Angeles", "country": "US" }
+            },
+            "sourceOrganization": "INRIA"
+          },
+          {
+            "title": "From network-level measurements to expected quality of experience: The Skype use case",
+            "url": "http://ieeexplore.ieee.org/abstract/document/7322989",
+            "datePublished": "2015-10",
+            "venue": {
+              "name": "IEEE M&N 2015",
+              "addr": { "locality": "Coimbra", "country": "Portugal" }
+            },
+            "sourceOrganization": "INRIA"
+          },
+          {
+            "title": "An ontology-based approach for the instrumentation, control and automation infrastructure of a WWTP",
+            "url": "https://scholarsarchive.byu.edu/iemssconference/2014/Stream-F/9/",
+            "datePublished": "2014-06",
+            "venue": {
+              "name": "iEMSs 2014",
+              "addr": { "locality": "San Diego", "country": "US" }
+            },
+            "sourceOrganization": "ENEA"
+          },
+          {
+            "title": "An ontology for the WWTP instrumentation, control and automation infrastructure",
+            "datePublished": "2013",
+            "type": "poster",
+            "venue": {
+              "name": "IWA ICA 2013",
+              "addr": { "locality": "Narbonne", "country": "France" }
+            },
+            "sourceOrganization": "ENEA"
+          }
+        ],
+        "languages": [
+          {
+            "name": "Italian",
+            "level": "Native Speaker"
+          },
+          {
+            "name": "English",
+            "level": "Fluent (C1)"
+          },
+          {
+            "name": "French",
+            "level": "Fluent"
+          }
+        ]
+      },
+      "filters": {
+        toIso8601DateFormat: function(v) {
+          // TODO implementation
+          return v;
+        },
+        toSimpleDateFormat: function(v) {
+          // TODO implementation
+          return v;
+        },
+        usePlaceholder: function(v) {
+          if(v) return v;
+
+          return "⨉\u2007\u2007\u2007\u2007\u2007"
+        },
+        md: function(v) {
+          // parse and compile input text as Markdown
+          return marked(v, { sanitize: true, gfm: true, breaks: true });
+        }
+      }
+    });
+    </script>
+  </body>
+</html>
